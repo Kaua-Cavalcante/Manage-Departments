@@ -1,0 +1,21 @@
+<div class="container">
+  <h1 class="title">Departamentos</h1>
+  <mat-card class="content">
+    <button mat-flat-button class="add-button" (click)="onAdd()">
+      <mat-icon>add_box</mat-icon>
+      Criar Departamento
+    </button>
+
+    <app-departamento-lista
+      *ngIf="departamentos$ | async as departamentos; else loading"
+      [departamentos]="departamentos"
+      (edit)="onEdit($event)"
+      (remove)="onRemove($event)"
+      (openDepartment)="onSelect($event)"
+    />
+  </mat-card>
+
+  <ng-template #loading>
+    <mat-spinner diameter="80" color="accent" />
+  </ng-template>
+</div>

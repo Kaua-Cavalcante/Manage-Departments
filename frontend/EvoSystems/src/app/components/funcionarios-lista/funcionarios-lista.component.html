@@ -1,0 +1,55 @@
+<mat-table 
+  [dataSource]="funcionarios"
+  class="mat-elevation-z8 employee-table full-width"
+>
+  <ng-container matColumnDef="id">
+    <mat-header-cell *matHeaderCellDef>#</mat-header-cell>
+    <mat-cell *matCellDef="let funcionarios">{{ funcionarios.id }}</mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="nome">
+    <mat-header-cell *matHeaderCellDef>Nome</mat-header-cell>
+    <mat-cell *matCellDef="let funcionarios">
+      {{ funcionarios.nome }}
+    </mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="rg">
+    <mat-header-cell *matHeaderCellDef>RG</mat-header-cell>
+    <mat-cell *matCellDef="let funcionarios">
+      {{ funcionarios.rg }}
+    </mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="foto">
+    <mat-header-cell *matHeaderCellDef>Foto</mat-header-cell>
+    <mat-cell *matCellDef="let funcionarios">
+      {{ funcionarios.foto }}
+    </mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="actions">
+    <mat-header-cell *matHeaderCellDef></mat-header-cell>
+    <mat-cell *matCellDef="let funcionarios">
+      <button
+        mat-icon-button
+        aria-label="Editar funcionario"
+        class="edit-button"
+      >
+        <mat-icon class="icon">drive_file_rename_outline</mat-icon>
+      </button>
+
+      <button
+        mat-icon-button color="warn"
+        aria-label="Excluir funcionario"
+        class="delete-button"
+      >
+        <mat-icon class="icon">delete_outlined</mat-icon>
+      </button>
+
+    </mat-cell>
+  </ng-container>
+
+  <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+  <mat-row *matRowDef="let row; columns: displayedColumns"></mat-row>
+</mat-table>

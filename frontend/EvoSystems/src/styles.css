@@ -1,0 +1,28 @@
+:root {
+    --primary: #012a64;
+    --secondary: #0082c9;
+    --danger: #c90000;
+    --gray: #bcbcbc;
+    --dark-gray: #262626;
+    --light-gray: #e0e0e0;
+  }
+  
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Montserrat", sans-serif;
+  }
+  
+  body {
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+    background-color: #F5F4F7;
+  }
+  
+  a,
+  li,
+  button {
+    text-decoration: none;
+    list-style: none;
+  }

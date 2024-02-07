@@ -1,0 +1,47 @@
+.toolbar {
+    position: fixed;
+    height: 4.8rem;
+    width: 100%;
+  
+    display: flex;
+    align-items: center;
+  
+    background-color: #fff;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.7);
+  }
+  
+  .toolbar-content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  
+    width: 100%;
+  }
+  
+  .toolbar .separator {
+    height: 2.5rem;
+    width: 2px;
+    background-color: var(--secondary);
+  
+    margin: 0 2rem 0 3.3rem;
+  }
+  
+  .navigation-list {
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  .navigation-list li {
+    padding: 0 1.3rem;
+  }
+  
+  .navigation-list li a {
+    font-size: 1rem;
+    transition: all 0.3s ease;
+    color: var(--primary);
+  }
+  
+  .navigation-list li a:hover {
+    color: var(--secondary);
+    text-decoration: underline;
+  }

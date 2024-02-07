@@ -1,0 +1,57 @@
+.container {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  height: 100vh;
+}
+
+.content {
+  display: flex;
+  align-items: flex-start;
+  min-width: 580px;
+  max-width: 70%;
+
+  margin: 8.8rem auto 2rem auto;
+  padding: 1rem;
+
+  box-shadow: 0 0 0;
+}
+
+.title {
+  font-size: 38px;
+  font-weight: 400;
+  color: var(--dark-gray);
+  margin-bottom: 1.5rem;
+}
+
+::ng-deep .mdc-text-field--focused:not(.mdc-text-field--disabled) .mdc-floating-label {
+    color: var(--secondary) !important;
+}
+
+::ng-deep .mdc-text-field--outlined:not(.mdc-text-field--disabled).mdc-text-field--focused .mdc-notched-outline__leading,
+::ng-deep .mdc-text-field--outlined:not(.mdc-text-field--disabled).mdc-text-field--focused .mdc-notched-outline__notch,
+::ng-deep .mdc-text-field--outlined:not(.mdc-text-field--disabled).mdc-text-field--focused .mdc-notched-outline__trailing {
+  border-color: var(--secondary ) !important;
+}
+
+.mat-icon {
+    color: #4b4b4b;
+}
+
+.card .create-button {
+  color: #fff;
+  background-color: var(--secondary);
+  margin-right: 1rem;
+  
+  padding: 5px 2.3rem;
+}
+
+.mdc-card__actions {
+    justify-content: space-between;
+    padding: 0;
+    width: 100%;
+}
+
+.full-width {
+  width: 100%;
+}

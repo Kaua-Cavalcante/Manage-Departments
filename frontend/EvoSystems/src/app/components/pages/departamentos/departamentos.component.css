@@ -1,0 +1,32 @@
+.container {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  height: 100vh;
+}
+
+.title {
+  margin: 6.8rem auto 2rem auto;
+  font-size: 38px;
+  font-weight: 400;
+  color: var(--dark-gray);
+}
+
+.content {
+  min-width: 580px;
+  width: 70%;
+  padding: 1rem;
+
+  box-shadow: 0 0 0 ;
+}
+
+.content .add-button {
+  color: #fff;
+  background-color: var(--secondary);
+  margin-bottom: 1rem;
+  width: 14rem;
+}
+
+.mat-mdc-progress-spinner.mat-accent {
+  --mdc-circular-progress-active-indicator-color: var(--secondary);
+}
