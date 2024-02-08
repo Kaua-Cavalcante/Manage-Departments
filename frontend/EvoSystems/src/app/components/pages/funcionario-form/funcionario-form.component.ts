@@ -57,7 +57,7 @@ export class FuncionarioFormComponent {
   }
 
   onCancel() {
-
+    this.location.back();
   }
 
   onSubmit() {
