@@ -8,7 +8,7 @@ import { Departamentos } from '../model/departamentos';
 })
 export class DepartamentosService {
   public departmentTitle?: string;
-  public departmentId?: number;
+  public departmentId: number = 0;
 
   private departamentoSelecionado = new BehaviorSubject<any>(null);
   departamentoSelecionado$ = this.departamentoSelecionado.asObservable();

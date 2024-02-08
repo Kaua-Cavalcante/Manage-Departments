@@ -7,11 +7,11 @@ import { Funcionarios } from '../model/funcionarios';
 })
 export class FuncionariosService {
 
-  private readonly API = 'https://localhost:7103/api/Funcionario/by-department/';
+  private readonly API = 'https://localhost:7103/api/Funcionario/by-department';
 
   constructor(private httpClient: HttpClient) { }
 
-  list() {
-    return this.httpClient.get<Funcionarios[]>(this.API);
+  listByDepartment(departmentId: number) {
+    return this.httpClient.get<Funcionarios[]>(`${this.API}/${departmentId}`);
   }
 }

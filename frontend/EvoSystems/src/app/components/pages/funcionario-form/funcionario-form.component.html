@@ -1,0 +1,31 @@
+<div class="container">
+  <mat-card class="content">
+    <h1 class="title">Novo Funcionário</h1>
+    <form action="" [formGroup]="form" class="full-width">
+      <mat-form-field appearance="outline" class="full-width">
+        <mat-label>Nome do funcionário</mat-label>
+        <input matInput placeholder="Ex: Epaminondas" formControlName="nome" />
+        <mat-icon matSuffix>face</mat-icon>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" class="full-width">
+        <mat-label>RG</mat-label>
+        <input matInput placeholder="12.345.678-x" formControlName="rg" />
+        <mat-icon matSuffix>badge</mat-icon>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" class="full-width">
+        <mat-label>foto</mat-label>
+        <input matInput placeholder="Image" formControlName="foto" />
+        <mat-icon matSuffix>add_a_photo</mat-icon>
+      </mat-form-field>
+    </form>
+
+    <mat-card-actions class="card">
+      <button mat-button class="create-button" (click)="onSubmit()">
+        Salvar
+      </button>
+      <button mat-button (click)="onCancel()">Cancelar</button>
+    </mat-card-actions>
+  </mat-card>
+</div>

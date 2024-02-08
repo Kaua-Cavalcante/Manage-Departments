@@ -4,6 +4,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatCard } from '@angular/material/card';
 import { MatIcon } from '@angular/material/icon';
 import { MatProgressSpinner } from '@angular/material/progress-spinner';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { Funcionarios } from '../../../model/funcionarios';
 import { DepartamentosService } from '../../../services/departamentos.service';
@@ -28,10 +29,13 @@ export class FuncionariosComponent {
   funcionarios$: Observable<Funcionarios[]> | null = null;
 
   title = this.departamentosService.departmentTitle;
+  departmentId: number = this.departamentosService.departmentId;
 
   constructor(
     private funcionariosService: FuncionariosService,
-    private departamentosService: DepartamentosService
+    private departamentosService: DepartamentosService,
+    private router: Router,
+    private route: ActivatedRoute
   ) { }
 
   ngOnInit() {
@@ -39,7 +43,12 @@ export class FuncionariosComponent {
   }
 
   refresh() {
-    this.funcionarios$ = this.funcionariosService.list()
+    this.funcionarios$ = this.funcionariosService.listByDepartment(this.departmentId)
+    console.log(this.departmentId)
+  }
+
+  onAdd() {
+    this.router.navigate(['novo'], {relativeTo: this.route});
   }
 
 }
