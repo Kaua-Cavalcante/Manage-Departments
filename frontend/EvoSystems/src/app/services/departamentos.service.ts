@@ -32,10 +32,10 @@ export class DepartamentosService {
   save(record: Partial<Departamentos>) {
     console.log(record);
     if (record.id) {
-      console.log('update');
+      console.log('update', record);
       return this.update(record);
     }
-    console.log('create');
+    console.log('create', record);
     return this.create(record);
   }
 

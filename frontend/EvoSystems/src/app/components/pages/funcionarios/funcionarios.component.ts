@@ -5,7 +5,7 @@ import { MatCard } from '@angular/material/card';
 import { MatIcon } from '@angular/material/icon';
 import { MatProgressSpinner } from '@angular/material/progress-spinner';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Observable } from 'rxjs';
+import { Observable, catchError, of } from 'rxjs';
 import { Funcionarios } from '../../../model/funcionarios';
 import { DepartamentosService } from '../../../services/departamentos.service';
 import { FuncionariosService } from '../../../services/funcionarios.service';
@@ -43,8 +43,13 @@ export class FuncionariosComponent {
   }
 
   refresh() {
-    this.funcionarios$ = this.funcionariosService.listByDepartment(this.departmentId)
-    console.log(this.departmentId)
+    this.funcionarios$ = this.funcionariosService.listByDepartment(this.departmentId).pipe(
+      catchError((error) => {
+        console.log(error)
+        return of([]);
+      })
+    );
+    console.log(this.departmentId);
   }
 
   onAdd() {

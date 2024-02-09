@@ -47,13 +47,15 @@ export class FuncionarioFormComponent {
   ngOnInit(): void {
     const funcionario: Funcionarios = this.route.snapshot.data['funcionario'];
 
-    this.form.setValue({
-      id: funcionario.id,
-      nome: funcionario.nome,
-      rg: funcionario.rg,
-      foto: funcionario.foto,
-      departamentoId: funcionario.departamentoId
-    })
+    if (funcionario) {
+      this.form.setValue({
+        id: funcionario.id,
+        nome: funcionario.nome,
+        rg: funcionario.rg,
+        foto: funcionario.foto,
+        departamentoId: funcionario.departamentoId
+      })
+    }
   }
 
   onCancel() {
@@ -61,7 +63,21 @@ export class FuncionarioFormComponent {
   }
 
   onSubmit() {
+    this.service.save(this.form.value).subscribe(
+      (result) => this.onSuccess(),
+      (error) => this.onError()
+    )
+  }
 
+  private onSuccess() {
+    this.snackBar.open('Funcionario salvo com sucesso!', '', {
+      duration: 5000,
+    });
+    this.onCancel();
+  }
+
+  private onError() {
+    this.snackBar.open('Erro ao salvar funcionário.', '', { duration: 5000 });
   }
 
 }

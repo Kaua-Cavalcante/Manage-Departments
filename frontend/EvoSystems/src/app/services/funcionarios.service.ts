@@ -7,11 +7,33 @@ import { Funcionarios } from '../model/funcionarios';
 })
 export class FuncionariosService {
 
-  private readonly API = 'https://localhost:7103/api/Funcionario/by-department';
+  private readonly API = 'https://localhost:7103/api/Funcionario';
 
   constructor(private httpClient: HttpClient) { }
 
   listByDepartment(departmentId: number) {
-    return this.httpClient.get<Funcionarios[]>(`${this.API}/${departmentId}`);
+    return this.httpClient.get<Funcionarios[]>(`${this.API}/by-department/${departmentId}`);
   }
+
+  save(record: Partial<Funcionarios>) {
+    console.log(record);
+    if(record.id) {
+      console.log('update');
+      return this.update(record);
+    }
+    console.log('create');
+    return this.create(record);
+  }
+
+  private create(record: Partial<Funcionarios>) {
+    return this.httpClient.post<Funcionarios>(this.API, record);
+  }
+
+  private update(record: Partial<Funcionarios>) {
+    return this.httpClient.put<Funcionarios>(`${this.API}/${record.id}`, record)
+  }
+
+  // remove(id: number) {
+  //   return this.httpClient.delete(`${this.API}/${id}`)
+  // }
 }
