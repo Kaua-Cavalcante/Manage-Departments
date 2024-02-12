@@ -11,6 +11,10 @@ export class FuncionariosService {
 
   constructor(private httpClient: HttpClient) { }
 
+  list() {
+    return this.httpClient.get<Funcionarios[]>(this.API);
+  }
+
   listByDepartment(departmentId: number) {
     return this.httpClient.get<Funcionarios[]>(`${this.API}/by-department/${departmentId}`);
   }

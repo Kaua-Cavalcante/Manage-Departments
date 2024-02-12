@@ -49,7 +49,6 @@ export class FuncionariosComponent {
         return of([]);
       })
     );
-    console.log(this.departmentId);
   }
 
   onAdd() {

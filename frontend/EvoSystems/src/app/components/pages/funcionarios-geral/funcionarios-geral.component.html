@@ -1,0 +1,14 @@
+<div class="container">
+    <h1 class="title">Funcionarios</h1>
+    <mat-card class="content">
+      <app-funcionarios-geral-lista
+        *ngIf="funcionarios$ | async as funcionarios else loading"
+        [funcionarios]="funcionarios"
+      />
+    </mat-card>
+  
+    <ng-template #loading>
+      <mat-spinner diameter="80" color="accent" />
+    </ng-template>
+  </div>
+  

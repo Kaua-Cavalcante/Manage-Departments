@@ -1,0 +1,33 @@
+<mat-table 
+  [dataSource]="funcionarios"
+  class="mat-elevation-z8 employee-table full-width"
+>
+  <ng-container matColumnDef="id">
+    <mat-header-cell *matHeaderCellDef>#</mat-header-cell>
+    <mat-cell *matCellDef="let funcionarios">{{ funcionarios.id }}</mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="nome">
+    <mat-header-cell *matHeaderCellDef>Nome</mat-header-cell>
+    <mat-cell *matCellDef="let funcionarios">
+      {{ funcionarios.nome }}
+    </mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="rg">
+    <mat-header-cell *matHeaderCellDef>RG</mat-header-cell>
+    <mat-cell *matCellDef="let funcionarios">
+      {{ funcionarios.rg }}
+    </mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="foto">
+    <mat-header-cell *matHeaderCellDef>Foto</mat-header-cell>
+    <mat-cell *matCellDef="let funcionarios">
+      {{ funcionarios.foto }}
+    </mat-cell>
+  </ng-container>
+
+  <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+  <mat-row *matRowDef="let row; columns: displayedColumns"></mat-row>
+</mat-table>
