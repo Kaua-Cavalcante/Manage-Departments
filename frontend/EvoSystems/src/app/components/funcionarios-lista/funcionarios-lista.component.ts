@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
@@ -15,8 +15,13 @@ import { Funcionarios } from '../../model/funcionarios';
 export class FuncionariosListaComponent {
 
   @Input() funcionarios: Funcionarios[] = [];
+  @Output() remove = new EventEmitter(false);
 
   readonly displayedColumns = ['id', 'nome', 'rg', 'foto', 'actions'];
 
   constructor() { }
+
+  onRemove(funcionario: Funcionarios) {
+    this.remove.emit(funcionario)
+  }
 }

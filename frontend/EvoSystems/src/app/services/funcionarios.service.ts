@@ -37,7 +37,7 @@ export class FuncionariosService {
     return this.httpClient.put<Funcionarios>(`${this.API}/${record.id}`, record)
   }
 
-  // remove(id: number) {
-  //   return this.httpClient.delete(`${this.API}/${id}`)
-  // }
+  remove(id: number) {
+    return this.httpClient.delete(`${this.API}/${id}`)
+  }
 }

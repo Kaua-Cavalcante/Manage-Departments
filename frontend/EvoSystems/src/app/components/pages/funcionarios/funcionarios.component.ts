@@ -2,13 +2,16 @@ import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCard } from '@angular/material/card';
+import { MatDialog } from '@angular/material/dialog';
 import { MatIcon } from '@angular/material/icon';
 import { MatProgressSpinner } from '@angular/material/progress-spinner';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Observable, catchError, of } from 'rxjs';
 import { Funcionarios } from '../../../model/funcionarios';
 import { DepartamentosService } from '../../../services/departamentos.service';
 import { FuncionariosService } from '../../../services/funcionarios.service';
+import { ConfirmationDialogComponent } from '../../confirmation-dialog/confirmation-dialog.component';
 import { FuncionariosListaComponent } from '../../funcionarios-lista/funcionarios-lista.component';
 
 @Component({
@@ -35,7 +38,9 @@ export class FuncionariosComponent {
     private funcionariosService: FuncionariosService,
     private departamentosService: DepartamentosService,
     private router: Router,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private snackBar: MatSnackBar,
+    public dialog: MatDialog
   ) { }
 
   ngOnInit() {
@@ -52,7 +57,26 @@ export class FuncionariosComponent {
   }
 
   onAdd() {
-    this.router.navigate(['novo'], {relativeTo: this.route});
+    this.router.navigate(['novo'], { relativeTo: this.route });
+  }
+
+  onRemove(funcionario: Funcionarios) {
+    const dialogRef = this.dialog.open(ConfirmationDialogComponent, {
+      data: 'Tem certeza que deseja remover esse departamento?'
+    });
+
+    dialogRef .afterClosed().subscribe((result: boolean) => {
+      if (result) {
+        this.funcionariosService.remove(funcionario.id).subscribe(() => {
+          this.refresh();
+          this.snackBar.open('Funcionario removido com sucesso!', 'X', {
+            duration: 5000,
+            verticalPosition: 'top',
+            horizontalPosition: 'center'
+          })
+        })
+      }
+    })
   }
 
 }

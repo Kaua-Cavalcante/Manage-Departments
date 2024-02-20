@@ -1,36 +1,36 @@
-<mat-table 
+<mat-table
   [dataSource]="funcionarios"
   class="mat-elevation-z8 employee-table full-width"
 >
   <ng-container matColumnDef="id">
     <mat-header-cell *matHeaderCellDef>#</mat-header-cell>
-    <mat-cell *matCellDef="let funcionarios">{{ funcionarios.id }}</mat-cell>
+    <mat-cell *matCellDef="let funcionario">{{ funcionario.id }}</mat-cell>
   </ng-container>
 
   <ng-container matColumnDef="nome">
     <mat-header-cell *matHeaderCellDef>Nome</mat-header-cell>
-    <mat-cell *matCellDef="let funcionarios">
-      {{ funcionarios.nome }}
+    <mat-cell *matCellDef="let funcionario">
+      {{ funcionario.nome }}
     </mat-cell>
   </ng-container>
 
   <ng-container matColumnDef="rg">
     <mat-header-cell *matHeaderCellDef>RG</mat-header-cell>
-    <mat-cell *matCellDef="let funcionarios">
-      {{ funcionarios.rg }}
+    <mat-cell *matCellDef="let funcionario">
+      {{ funcionario.rg }}
     </mat-cell>
   </ng-container>
 
   <ng-container matColumnDef="foto">
     <mat-header-cell *matHeaderCellDef>Foto</mat-header-cell>
-    <mat-cell *matCellDef="let funcionarios">
-      {{ funcionarios.foto }}
+    <mat-cell *matCellDef="let funcionario">
+      {{ funcionario.foto }}
     </mat-cell>
   </ng-container>
 
   <ng-container matColumnDef="actions">
     <mat-header-cell *matHeaderCellDef></mat-header-cell>
-    <mat-cell *matCellDef="let funcionarios">
+    <mat-cell *matCellDef="let funcionario">
       <button
         mat-icon-button
         aria-label="Editar funcionario"
@@ -40,13 +40,14 @@
       </button>
 
       <button
-        mat-icon-button color="warn"
+        mat-icon-button
+        color="warn"
         aria-label="Excluir funcionario"
         class="delete-button"
+        (click)="onRemove(funcionario)"
       >
         <mat-icon class="icon">delete_outlined</mat-icon>
       </button>
-
     </mat-cell>
   </ng-container>
 
