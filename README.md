@@ -24,9 +24,13 @@ Esta aplicação possibilita o usuário simular o gerenciamento de uma empresa, 
 
 Dependências usadas no projeto:
 
+### Frontend
 -  [Angular](https://angular.io/)
 -  [Angular Material](https://material.angular.io/)
 -  [TypeScript](https://www.typescriptlang.org/)
+
+### Backend
+- [EntityFramework 6.0]()
 
 ## 📥 Instalação e execução
 
