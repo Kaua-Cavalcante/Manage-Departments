@@ -17,13 +17,17 @@
   
     width: 100%;
   }
+
+  .logo {
+    margin-top: 8px;
+  }
   
   .toolbar .separator {
     height: 2.5rem;
     width: 2px;
     background-color: var(--secondary);
   
-    margin: 0 2rem 0 3.3rem;
+    margin: 0 2rem 0 2rem;
   }
   
   .navigation-list {

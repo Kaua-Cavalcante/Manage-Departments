@@ -9,6 +9,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
 import { ActivatedRoute } from '@angular/router';
 import { Funcionarios } from '../../../model/funcionarios';
+import { DepartamentosService } from '../../../services/departamentos.service';
 import { FuncionariosService } from '../../../services/funcionarios.service';
 
 @Component({
@@ -36,9 +37,12 @@ export class FuncionarioFormComponent {
     departamentoId: 0
   });
 
+  departamentoId: number = this.departamentosService.departmentId;
+
   constructor(
     private formBuilder: NonNullableFormBuilder,
     private service: FuncionariosService,
+    private departamentosService: DepartamentosService,
     private snackBar: MatSnackBar,
     private location: Location,
     private route: ActivatedRoute
@@ -66,7 +70,7 @@ export class FuncionarioFormComponent {
     this.service.save(this.form.value).subscribe(
       (result) => this.onSuccess(),
       (error) => this.onError()
-    )
+    );
   }
 
   private onSuccess() {
