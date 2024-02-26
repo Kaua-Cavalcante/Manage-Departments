@@ -10,6 +10,9 @@ export class DepartamentosService {
   public departmentTitle?: string;
   public departmentId: number = 0;
 
+  private departmentIdSubject = new BehaviorSubject<number>(0);
+  departmentId$ = this.departmentIdSubject.asObservable();
+
   private departamentoSelecionado = new BehaviorSubject<any>(null);
   departamentoSelecionado$ = this.departamentoSelecionado.asObservable();
 
@@ -22,7 +25,7 @@ export class DepartamentosService {
   constructor(private httpClient: HttpClient) { }
 
   list() {
-    return this.httpClient.get<Departamentos[]>(this.API).pipe();
+    return this.httpClient.get<Departamentos[]>(this.API);
   }
 
   loadById(id: string) {
@@ -49,5 +52,13 @@ export class DepartamentosService {
 
   remove(id: number) {
     return this.httpClient.delete(`${this.API}/${id}`)
+  }
+
+  setDepartmentId(id: number): void {
+    this.departmentIdSubject.next(id);
+  }
+
+  getDepartmentId(): number {
+    return this.departmentIdSubject.value;
   }
 }
