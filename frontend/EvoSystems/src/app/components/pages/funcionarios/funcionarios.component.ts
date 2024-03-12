@@ -44,13 +44,11 @@ export class FuncionariosComponent {
   ) { }
 
   ngOnInit() {
-    this.departamentosService.departmentId$.subscribe((departmentId) => {
-      this.refresh(departmentId);
-    })
+    this.refresh();
   }
 
-  refresh(departmentId: number) {
-    this.funcionarios$ = this.funcionariosService.listByDepartment(departmentId).pipe(
+  refresh() {
+    this.funcionarios$ = this.funcionariosService.listByDepartment(this.departmentId).pipe(
       catchError((error) => {
         console.log(error)
         return of([]);
@@ -60,6 +58,7 @@ export class FuncionariosComponent {
 
   onAdd() {
     this.router.navigate(['novo'], { relativeTo: this.route });
+    console.log(this.departmentId);
   }
 
   onRemove(funcionario: Funcionarios) {
@@ -70,7 +69,7 @@ export class FuncionariosComponent {
     dialogRef .afterClosed().subscribe((result: boolean) => {
       if (result) {
         this.funcionariosService.remove(funcionario.id).subscribe(() => {
-          this.refresh(this.departamentosService.getDepartmentId());
+          this.refresh();
           this.snackBar.open('Funcionario removido com sucesso!', 'X', {
             duration: 5000,
             verticalPosition: 'top',

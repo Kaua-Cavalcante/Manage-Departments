@@ -34,10 +34,10 @@ export class FuncionarioFormComponent {
     nome: [''],
     rg: [''],
     foto: [''],
-    departamentoId: 0
+    departamentoId: this.departamentosService.departmentId
   });
 
-  // departamentoId: number = this.departamentosService.departmentId;
+  departamentoId: number = this.departamentosService.departmentId;
 
   constructor(
     private formBuilder: NonNullableFormBuilder,
@@ -50,10 +50,6 @@ export class FuncionarioFormComponent {
 
   ngOnInit(): void {
     const funcionario: Funcionarios = this.route.snapshot.data['funcionario'];
-
-    this.departamentosService.departmentId$.subscribe((departmentId) => {
-      this.form.patchValue({ departamentoId: departmentId });
-    });
 
     if (funcionario) {
       this.form.setValue({
@@ -68,6 +64,7 @@ export class FuncionarioFormComponent {
 
   onCancel() {
     this.location.back();
+    console.log(this.departamentoId);
   }
 
   onSubmit() {

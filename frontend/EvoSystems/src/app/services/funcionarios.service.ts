@@ -1,6 +1,5 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
 import { Funcionarios } from '../model/funcionarios';
 
 @Injectable({
@@ -16,7 +15,7 @@ export class FuncionariosService {
     return this.httpClient.get<Funcionarios[]>(this.API);
   }
 
-  listByDepartment(departmentId: number): Observable<Funcionarios[]> {
+  listByDepartment(departmentId: number) {
     return this.httpClient.get<Funcionarios[]>(`${this.API}/by-department/${departmentId}`);
   }
 
