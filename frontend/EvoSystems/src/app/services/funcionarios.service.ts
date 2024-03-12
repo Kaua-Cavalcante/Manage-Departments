@@ -19,6 +19,10 @@ export class FuncionariosService {
     return this.httpClient.get<Funcionarios[]>(`${this.API}/by-department/${departmentId}`);
   }
 
+  loadById(id: string) {
+    return this.httpClient.get<Funcionarios>(`${this.API}/${id}`);
+  }
+
   save(record: Partial<Funcionarios>) {
     console.log(record);
     if(record.id) {

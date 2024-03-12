@@ -10,18 +10,22 @@ import { Funcionarios } from '../../model/funcionarios';
   standalone: true,
   imports: [MatButtonModule, MatIconModule, MatTableModule],
   templateUrl: './funcionarios-lista.component.html',
-  styleUrl: './funcionarios-lista.component.css'
+  styleUrl: './funcionarios-lista.component.css',
 })
 export class FuncionariosListaComponent {
-
   @Input() funcionarios: Funcionarios[] = [];
+  @Output() edit = new EventEmitter(false);
   @Output() remove = new EventEmitter(false);
 
   readonly displayedColumns = ['id', 'nome', 'rg', 'foto', 'actions'];
 
-  constructor() { }
+  constructor() {}
 
   onRemove(funcionario: Funcionarios) {
-    this.remove.emit(funcionario)
+    this.remove.emit(funcionario);
+  }
+
+  onEdit(funcionario: Funcionarios) {
+    this.edit.emit(funcionario);
   }
 }

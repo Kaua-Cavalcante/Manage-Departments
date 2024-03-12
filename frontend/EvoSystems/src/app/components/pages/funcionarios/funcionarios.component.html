@@ -8,6 +8,7 @@
     <app-funcionarios-lista
       *ngIf="funcionarios$ | async as funcionarios else loading"
       [funcionarios]="funcionarios"
+      (edit)="onEdit($event)"
       (remove)="onRemove($event)"
     />
   </mat-card>

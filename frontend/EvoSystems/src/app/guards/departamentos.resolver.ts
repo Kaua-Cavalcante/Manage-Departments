@@ -4,10 +4,13 @@ import { Observable, of } from 'rxjs';
 import { Departamentos } from '../model/departamentos';
 import { DepartamentosService } from '../services/departamentos.service';
 
-export const departamentosResolver: ResolveFn<Observable<Departamentos>> = (route, state, service: DepartamentosService =
-inject(DepartamentosService)) => {
-  if (route.params && route.params['id']){
+export const departamentosResolver: ResolveFn<Observable<Departamentos>> = (
+  route,
+  state,
+  service: DepartamentosService = inject(DepartamentosService)
+) => {
+  if (route.params && route.params['id']) {
     return service.loadById(route.params['id']);
   }
-  return of({id: 0, nome: '', sigla: ''});
+  return of({ id: 0, nome: '', sigla: '' });
 };

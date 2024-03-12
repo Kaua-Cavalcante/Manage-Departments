@@ -6,6 +6,7 @@ import { FuncionariosGeralComponent } from './components/pages/funcionarios-gera
 import { FuncionariosComponent } from './components/pages/funcionarios/funcionarios.component';
 import { HomeComponent } from './components/pages/home/home.component';
 import { departamentosResolver } from './guards/departamentos.resolver';
+import { funcionarioResolver } from './guards/funcionario.resolver';
 
 export const routes: Routes = [
     { 'path': '', component: HomeComponent, title: "Evo Systems" },
@@ -14,5 +15,6 @@ export const routes: Routes = [
     { 'path': 'departamentos/novo', component: DepartamentoFormComponent, resolve: { departamento: departamentosResolver }, title: "Novo Departamento" },
     { 'path': 'departamentos/editar/:id', component: DepartamentoFormComponent, resolve: { departamento: departamentosResolver }, title: "Editar Departamento" },
     { 'path': 'departamentos/:sigla/:id', component: FuncionariosComponent },
-    { 'path': 'departamentos/:sigla/:id/novo', component: FuncionarioFormComponent, title: "Novo Funcionario" }
+    { 'path': 'departamentos/:sigla/:id/novo', component: FuncionarioFormComponent, resolve: { funcionario: funcionarioResolver }, title: "Novo Funcionario" },
+    { 'path': 'departamentos/:sigla/:id/editar/:id', component: FuncionarioFormComponent, resolve: { funcionario: funcionarioResolver }, title: "Editar Funcionario"}
 ];

@@ -61,12 +61,16 @@ export class FuncionariosComponent {
     console.log(this.departmentId);
   }
 
+  onEdit(funcionario: Funcionarios) {
+    this.router.navigate(['editar', funcionario.id], { relativeTo: this.route });
+  }
+
   onRemove(funcionario: Funcionarios) {
     const dialogRef = this.dialog.open(ConfirmationDialogComponent, {
       data: 'Tem certeza que deseja remover esse departamento?'
     });
 
-    dialogRef .afterClosed().subscribe((result: boolean) => {
+    dialogRef.afterClosed().subscribe((result: boolean) => {
       if (result) {
         this.funcionariosService.remove(funcionario.id).subscribe(() => {
           this.refresh();
